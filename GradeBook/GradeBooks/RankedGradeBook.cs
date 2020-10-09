@@ -39,11 +39,11 @@ namespace GradeBook.GradeBooks
                 }
                 if (x == listOfAverageGrades.Count)
                 {
-                    index = x;
+                    index = x+1;
                 }
             }
 
-            int marker = (listOfAverageGrades.Count) - twentyPercent;
+            int marker = (listOfAverageGrades.Count + 1) - twentyPercent;
             int count = 0;
             while (index < marker)
             {
