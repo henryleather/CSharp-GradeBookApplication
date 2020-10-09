@@ -26,7 +26,7 @@ namespace GradeBook.GradeBooks
             }
             listOfAverageGrades.Sort();
 
-            var twentyPercentDouble = listOfAverageGrades.Count * 0.20;
+            var twentyPercentDouble = Math.Ceiling(listOfAverageGrades.Count * 0.20);
             var twentyPercent = Convert.ToInt32(twentyPercentDouble);
             int index = 0;
 
