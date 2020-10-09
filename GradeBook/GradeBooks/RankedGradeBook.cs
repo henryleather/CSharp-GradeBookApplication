@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GradeBook.Enums;
 
 namespace GradeBook.GradeBooks
@@ -18,52 +19,26 @@ namespace GradeBook.GradeBooks
                 throw new InvalidOperationException("Ranked-grading requires a minimum of 5 students to work");
             }
 
-            var listOfAverageGrades = new List<double>();
-
-            foreach (Student student in Students)
-            {
-                listOfAverageGrades.Add(student.AverageGrade);
-            }
+            var listOfAverageGrades = Students.Select(e => e.AverageGrade).ToList();
             listOfAverageGrades.Sort();
 
             var twentyPercentDouble = Math.Ceiling(listOfAverageGrades.Count * 0.20);
             var twentyPercent = Convert.ToInt32(twentyPercentDouble);
-            int index = 0;
+            var totalGrades = listOfAverageGrades.Count;
 
-            for (int x = 0; x < listOfAverageGrades.Count; x++)
-            {
-                if (averageGrade < listOfAverageGrades[x])
-                {
-                    index = x;
-                    break;
-                }
-                if (x == listOfAverageGrades.Count)
-                {
-                    index = x+1;
-                }
-            }
-
-            int marker = (listOfAverageGrades.Count + 1) - twentyPercent;
-            int count = 0;
-            while (index < marker)
-            {
-                count += 1;
-                marker -= twentyPercent;
-            }
-
-            if (count == 0)
+            if (averageGrade > listOfAverageGrades[totalGrades - 1 - twentyPercent])
             {
                 return 'A';
             }
-            else if (count == 1)
+            else if (averageGrade > listOfAverageGrades[totalGrades - 1 - 2 * twentyPercent])
             {
                 return 'B';
             }
-            else if (count == 2)
+            else if (averageGrade > listOfAverageGrades[totalGrades - 1 - 3 * twentyPercent])
             {
                 return 'C';
             }
-            else if (count == 3)
+            else if (averageGrade > listOfAverageGrades[totalGrades - 1 - 4 * twentyPercent])
             {
                 return 'D';
             }
