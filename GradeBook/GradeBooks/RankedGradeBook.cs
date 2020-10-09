@@ -34,12 +34,12 @@ namespace GradeBook.GradeBooks
             {
                 if (averageGrade < listOfAverageGrades[x])
                 {
-                    index = x;
+                    index = x+1;
                     break;
                 }
                 if (x == listOfAverageGrades.Count)
                 {
-                    index = x;
+                    index = x+1;
                 }
             }
 
