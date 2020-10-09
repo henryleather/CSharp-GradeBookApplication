@@ -51,19 +51,19 @@ namespace GradeBook.GradeBooks
                 marker -= twentyPercent;
             }
 
-            if (count == 0)
+            if (count == 0 || count == 1)
             {
                 return 'A';
             }
-            else if (count == 1)
+            else if (count == 2)
             {
                 return 'B';
             }
-            else if (count == 2)
+            else if (count == 3)
             {
                 return 'C';
             }
-            else if (count == 3)
+            else if (count == 4s)
             {
                 return 'D';
             }
