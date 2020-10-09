@@ -22,23 +22,23 @@ namespace GradeBook.GradeBooks
             var listOfAverageGrades = Students.Select(e => e.AverageGrade).ToList();
             listOfAverageGrades.Sort();
 
-            var twentyPercentDouble = Math.Ceiling(listOfAverageGrades.Count * 0.20);
+            var twentyPercentDouble = listOfAverageGrades.Count * 0.20;
             var twentyPercent = Convert.ToInt32(twentyPercentDouble);
             var totalGrades = listOfAverageGrades.Count;
 
-            if (averageGrade > listOfAverageGrades[totalGrades - 1 - twentyPercent])
+            if (averageGrade > listOfAverageGrades[totalGrades - 2 - twentyPercent])
             {
                 return 'A';
             }
-            else if (averageGrade > listOfAverageGrades[totalGrades - 1 - 2 * twentyPercent])
+            else if (averageGrade > listOfAverageGrades[totalGrades - 2 - 2 * twentyPercent])
             {
                 return 'B';
             }
-            else if (averageGrade > listOfAverageGrades[totalGrades - 1 - 3 * twentyPercent])
+            else if (averageGrade > listOfAverageGrades[totalGrades - 2 - 3 * twentyPercent])
             {
                 return 'C';
             }
-            else if (averageGrade > listOfAverageGrades[totalGrades - 1 - 4 * twentyPercent])
+            else if (averageGrade > listOfAverageGrades[totalGrades - 2 - 4 * twentyPercent])
             {
                 return 'D';
             }
