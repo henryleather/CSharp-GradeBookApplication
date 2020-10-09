@@ -128,7 +128,7 @@ namespace GradeBook.GradeBooks
                 case 'F':
                     break;
             }
-            if(IsWeighted == true) { return gpa + 1; }
+            if(IsWeighted == true && (studentType.ToString()=="Honors" || studentType.ToString() == "DualEnrolled")) { return gpa + 1; }
             return gpa;
         }
 
