@@ -1,5 +1,6 @@
 ﻿using GradeBook.GradeBooks;
 using System;
+using System.Dynamic;
 
 namespace GradeBook.UserInterfaces
 {
@@ -39,15 +40,20 @@ namespace GradeBook.UserInterfaces
                 Console.WriteLine("Command not valid, Create requires a name and type of gradebook.");
                 return;
             }
+
             var name = parts[1];
-            var gradeBook = new BaseGradeBook(name);
+
             if (parts[2].ToLower() == "standard")
             {
-                gradeBook = new StandardGradeBook(name);
+                var gradeBook = new StandardGradeBook(name);
+                Console.WriteLine("Created gradebook {0}.", name);
+                GradeBookUserInterface.CommandLoop(gradeBook);
             }
             else if (parts[2].ToLower() == "ranked")
             {
-                gradeBook = new RankedGradeBook(name);
+                var gradeBook = new RankedGradeBook(name);
+                Console.WriteLine("Created gradebook {0}.", name);
+                GradeBookUserInterface.CommandLoop(gradeBook);
             }
             else
             {
@@ -56,9 +62,6 @@ namespace GradeBook.UserInterfaces
             }
 
             
-
-            Console.WriteLine("Created gradebook {0}.", name);
-            GradeBookUserInterface.CommandLoop(gradeBook);
         }
 
         public static void LoadCommand(string command)
