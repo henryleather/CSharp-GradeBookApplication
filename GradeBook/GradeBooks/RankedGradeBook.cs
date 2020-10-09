@@ -43,7 +43,7 @@ namespace GradeBook.GradeBooks
                 }
             }
 
-            int marker = listOfAverageGrades.Count;
+            int marker = listOfAverageGrades.Count - twentyPercent;
             int count = 0;
             while (index < marker)
             {
@@ -51,19 +51,19 @@ namespace GradeBook.GradeBooks
                 marker -= twentyPercent;
             }
 
-            if (count == 0 || count == 1)
+            if (count == 0)
             {
                 return 'A';
             }
-            else if (count == 2)
+            else if (count == 1)
             {
                 return 'B';
             }
-            else if (count == 3)
+            else if (count == 2)
             {
                 return 'C';
             }
-            else if (count == 4)
+            else if (count == 3)
             {
                 return 'D';
             }
