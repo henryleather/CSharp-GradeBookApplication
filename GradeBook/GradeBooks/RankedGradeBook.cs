@@ -63,7 +63,7 @@ namespace GradeBook.GradeBooks
             {
                 return 'C';
             }
-            else if (count == 4s)
+            else if (count == 4)
             {
                 return 'D';
             }
