@@ -19,26 +19,24 @@ namespace GradeBook.GradeBooks
                 throw new InvalidOperationException("Ranked-grading requires a minimum of 5 students to work");
             }
 
-            var listOfAverageGrades = Students.Select(e => e.AverageGrade).ToList();
-            listOfAverageGrades.Sort();
+            var listOfAverageGrades = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();
 
-            var twentyPercentDouble = listOfAverageGrades.Count * 0.20;
+            var twentyPercentDouble = Math.Ceiling(listOfAverageGrades.Count * 0.20);
             var twentyPercent = Convert.ToInt32(twentyPercentDouble);
-            var totalGrades = listOfAverageGrades.Count;
 
-            if (averageGrade > listOfAverageGrades[totalGrades - 2 - twentyPercent])
+            if (averageGrade > listOfAverageGrades[twentyPercent - 1])
             {
                 return 'A';
             }
-            else if (averageGrade > listOfAverageGrades[totalGrades - 2 - 2 * twentyPercent])
+            else if (averageGrade > listOfAverageGrades[2 * twentyPercent - 1])
             {
                 return 'B';
             }
-            else if (averageGrade > listOfAverageGrades[totalGrades - 2 - 3 * twentyPercent])
+            else if (averageGrade > listOfAverageGrades[3 * twentyPercent - 1])
             {
                 return 'C';
             }
-            else if (averageGrade > listOfAverageGrades[totalGrades - 2 - 4 * twentyPercent])
+            else if (averageGrade > listOfAverageGrades[4 * twentyPercent - 1])
             {
                 return 'D';
             }
