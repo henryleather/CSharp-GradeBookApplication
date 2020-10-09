@@ -43,12 +43,12 @@ namespace GradeBook.GradeBooks
                 }
             }
 
-            int marker = (listOfAverageGrades.Count+1) - twentyPercent;
+            double marker = (listOfAverageGrades.Count + 1) - twentyPercentDouble;
             int count = 0;
             while (index < marker)
             {
                 count += 1;
-                marker -= twentyPercent;
+                marker -= twentyPercentDouble;
             }
 
             if (count == 0)
