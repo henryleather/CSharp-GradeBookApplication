@@ -34,7 +34,7 @@ namespace GradeBook.GradeBooks
             {
                 if (averageGrade < listOfAverageGrades[x])
                 {
-                    index = x+1;
+                    index = x;
                     break;
                 }
                 if (x == listOfAverageGrades.Count)
